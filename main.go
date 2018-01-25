@@ -1,14 +1,18 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jessevdk/go-flags"
 )
 
+var version = "master"
+
 // Options is a server options
 type Options struct {
+	Version bool   `long:"version" description:"Show version"`
 	Address string `short:"a" long:"address" description:"Server address" default:":3000"`
 	Verbose []bool `short:"v" long:"verbose" description:"Verbose output"`
 }
@@ -36,6 +40,11 @@ func main() {
 		} else {
 			os.Exit(1)
 		}
+	}
+
+	if options.Version {
+		fmt.Println(version)
+		os.Exit(0)
 	}
 
 	gin.SetMode(gin.ReleaseMode)
