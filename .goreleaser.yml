@@ -1,0 +1,14 @@
+builds:
+  - binary: mocksrv
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+
+release:
+  github:
+    owner: mashiro
+    name: mocksrv
+
